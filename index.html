@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Goto Hair Salon · East Village, New York</title>
+<meta name="description" content="Goto is a one-stylist hair salon at 225 East 5th Street in New York. Open Tuesday to Sunday, 1 pm to 9 pm. Book by email. Chairs available to rent for freelance stylists.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EFEEEA;
+    --paper-deep: #E4E2DB;
+    --ink: #1C1D21;
+    --ink-soft: #4A4B52;
+    --floor: #8F4A12;      /* text-safe wood amber */
+    --glow: #F2B544;       /* window light */
+    --brick: #6E2D20;
+    --line: rgba(28, 29, 33, .18);
+
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", Georgia, serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
+
+    --s1: .5rem; --s2: 1rem; --s3: 1.5rem; --s4: 2.5rem; --s5: 4rem; --s6: 6.5rem;
+    --wrap: 72rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.65 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--floor); outline-offset: 3px; border-radius: 2px; }
+  .on-brick :focus-visible { outline-color: var(--glow); }
+
+  .wrap { width: min(100% - 2rem, var(--wrap)); margin-inline: auto; }
+
+  .skip { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .6rem 1rem; z-index: 10; }
+  .skip:focus { top: 1rem; }
+
+  /* ---------- header ---------- */
+  .top { padding-block: var(--s3); }
+  .top .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .75rem 2rem; }
+  .mark { font: 700 1.75rem/1 var(--serif); text-decoration: none; letter-spacing: .01em; }
+  .top nav { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; }
+  .top nav a { text-decoration: none; padding: .5rem 0; min-height: 44px; display: inline-flex; align-items: center; font-weight: 500; }
+  .top nav a:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+
+  /* ---------- hero ---------- */
+  .hero { padding-block: var(--s4) var(--s6); }
+  .hero .wrap { display: grid; gap: var(--s4); grid-template-columns: 1fr; align-items: end; }
+  h1 {
+    font: 700 clamp(2.4rem, 7vw, 4.6rem)/1.08 var(--serif);
+    margin: 0 0 var(--s3);
+    letter-spacing: -.005em;
+    text-wrap: balance;
+  }
+  .lede { font-size: 1.25rem; max-width: 34rem; margin: 0 0 var(--s3); color: var(--ink-soft); }
+  .status { display: flex; align-items: center; gap: .6rem; margin: 0 0 var(--s3); font-weight: 500; }
+  .dot { width: .7rem; height: .7rem; border-radius: 50%; background: var(--ink-soft); flex: none; }
+  .status[data-open="true"] .dot { background: #1F7A3E; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: center; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px; padding: .7rem 1.5rem;
+    background: var(--ink); color: var(--paper);
+    font: 700 1rem/1.2 var(--sans); text-decoration: none;
+    border: 2px solid var(--ink); border-radius: 2px;
+    transition: background-color .15s, color .15s;
+  }
+  .btn:hover { background: transparent; color: var(--ink); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--paper); }
+
+  .door { margin: 0; }
+  .door img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 34% 50%; }
+  .door figcaption { font-size: .9375rem; color: var(--ink-soft); padding-top: .6rem; }
+  .door .frame { overflow: hidden; background: var(--ink); }
+  /* the one motion on the page: the window lights up on load */
+  @media (prefers-reduced-motion: no-preference) {
+    .door img { animation: lightup 1.6s .15s cubic-bezier(.2, .6, .2, 1) both; }
+    @keyframes lightup { from { filter: brightness(.08) saturate(.6); } to { filter: none; } }
+  }
+
+  @media (min-width: 52rem) {
+    .hero .wrap { grid-template-columns: 1.15fr .85fr; gap: var(--s5); }
+  }
+
+  /* ---------- shared section bits ---------- */
+  section { padding-block: var(--s6); }
+  h2 { font: 700 clamp(1.9rem, 4.5vw, 2.8rem)/1.15 var(--serif); margin: 0 0 var(--s3); text-wrap: balance; }
+  .sec-head { max-width: 40rem; margin-bottom: var(--s4); }
+  .sec-head p { margin: 0; color: var(--ink-soft); }
+
+  /* ---------- visit info ---------- */
+  .visit { background: var(--paper-deep); padding-block: var(--s4); }
+  .visit dl { display: grid; gap: var(--s3); margin: 0; grid-template-columns: 1fr; }
+  .visit dt { font-weight: 700; margin-bottom: .15rem; }
+  .visit dd { margin: 0; }
+  .visit a { text-underline-offset: 4px; }
+  @media (min-width: 46rem) { .visit dl { grid-template-columns: repeat(3, 1fr); gap: var(--s4); } }
+
+  /* ---------- prices ---------- */
+  .offers { display: grid; gap: var(--s3); grid-template-columns: 1fr; margin-bottom: var(--s4); }
+  .offer { border-top: 3px solid var(--ink); padding-top: var(--s2); }
+  .offer .big { font: 700 clamp(2.6rem, 6vw, 3.8rem)/1 var(--serif); display: block; margin-bottom: .5rem; }
+  .offer p { margin: 0; max-width: 24rem; }
+  @media (min-width: 46rem) { .offers { grid-template-columns: repeat(2, 1fr); gap: var(--s5); } }
+
+  .notes { list-style: none; margin: 0; padding: 0; max-width: 42rem; }
+  .notes li { padding: .85rem 0; border-top: 1px solid var(--line); }
+  .notes li:last-child { border-bottom: 1px solid var(--line); }
+  .notes strong { font-weight: 700; }
+
+  /* ---------- book ---------- */
+  .book { background: var(--paper-deep); }
+  .book .wrap { display: grid; gap: var(--s4); grid-template-columns: 1fr; }
+  .book address { font-style: normal; font-size: 1.25rem; margin: 0 0 var(--s3); }
+  .book address a { font-weight: 700; text-underline-offset: 5px; text-decoration-thickness: 2px; word-break: break-word; }
+  .steps { margin: 0 0 var(--s3); padding-left: 1.25rem; max-width: 34rem; }
+  .steps li { padding-left: .35rem; margin-bottom: .4rem; }
+  @media (min-width: 52rem) { .book .wrap { grid-template-columns: 1fr 1fr; gap: var(--s5); align-items: start; } }
+
+  /* ---------- studio ---------- */
+  .studio .wrap { display: grid; gap: var(--s4); grid-template-columns: 1fr; align-items: center; }
+  .studio figure { margin: 0; }
+  .studio img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+  .studio p { max-width: 32rem; margin: 0 0 var(--s2); color: var(--ink-soft); }
+  @media (min-width: 52rem) { .studio .wrap { grid-template-columns: 1.3fr .7fr; gap: var(--s5); } }
+
+  /* ---------- chair rental ---------- */
+  .rent { background: var(--brick); color: var(--paper); }
+  .rent .wrap { display: grid; gap: var(--s4); grid-template-columns: 1fr; }
+  .rent h2 { max-width: 22rem; }
+  .rent p { margin: 0 0 var(--s2); max-width: 34rem; font-size: 1.125rem; }
+  .rent .terms { list-style: none; padding: 0; margin: 0 0 var(--s3); }
+  .rent .terms li { padding: .7rem 0; border-top: 1px solid rgba(239, 238, 234, .35); font-size: 1.125rem; }
+  .rent .terms li:last-child { border-bottom: 1px solid rgba(239, 238, 234, .35); }
+  .btn.glow { background: var(--glow); border-color: var(--glow); color: var(--ink); }
+  .btn.glow:hover { background: transparent; color: var(--glow); }
+  .rent .alt { font-size: 1rem; margin-top: var(--s2); }
+  @media (min-width: 52rem) { .rent .wrap { grid-template-columns: 1fr 1fr; gap: var(--s5); align-items: start; } }
+
+  /* ---------- footer ---------- */
+  footer { padding-block: var(--s4); font-size: .9375rem; color: var(--ink-soft); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: .5rem 2rem; justify-content: space-between; }
+  footer a { text-underline-offset: 4px; }
+  footer ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Goto, home">goto</a>
+    <nav aria-label="Main">
+      <a href="#prices">Prices</a>
+      <a href="#book">Book</a>
+      <a href="#studio">Studio</a>
+      <a href="#rent">Rent a chair</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <h1>Haircuts by Goto, in a quiet room on East 5th Street.</h1>
+        <p class="lede">Goto is from Japan, an honest and skilled stylist. The salon is a one-man show, so every appointment is with him.</p>
+        <p class="status" id="status" aria-live="polite"><span class="dot" aria-hidden="true"></span><span id="status-text">Open Tuesday to Sunday, 1 pm to 9 pm</span></p>
+        <div class="actions">
+          <a class="btn" href="#book">Book a haircut</a>
+          <a class="btn ghost" href="#prices">See prices</a>
+        </div>
+      </div>
+      <figure class="door">
+        <div class="frame">
+          <img src="images/front-door.jpeg" width="543" height="362" alt="The salon's front door at 225 East 5th Street, a brass plate reading goto beside a lit window, with a pedestrian passing in motion blur.">
+        </div>
+        <figcaption>225 East 5th Street, the west store.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section class="visit" aria-label="Visit">
+    <div class="wrap">
+      <dl>
+        <div>
+          <dt>Hours</dt>
+          <dd>Tuesday to Sunday<br>1 pm to 9 pm<br>Closed Monday</dd>
+        </div>
+        <div>
+          <dt>Address</dt>
+          <dd>225 East 5th Street, west store<br>New York, NY 10003<br>
+            <a href="https://www.google.com/maps/search/?api=1&query=225+East+5th+Street+New+York+NY+10003">Open in Maps</a></dd>
+        </div>
+        <div>
+          <dt>Appointments</dt>
+          <dd>By appointment only. Email is easiest:<br>
+            <a href="mailto:gotohairny@gmail.com">gotohairny@gmail.com</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="prices">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Prices</h2>
+        <p>First visit? Two good reasons to come in.</p>
+      </div>
+
+      <div class="offers">
+        <div class="offer">
+          <span class="big">$50</span>
+          <p><strong>Men’s haircut, first time.</strong> A special price for new men’s clients.</p>
+        </div>
+        <div class="offer">
+          <span class="big">50% off</span>
+          <p><strong>Haircut, first time.</strong> For all new customers.</p>
+        </div>
+      </div>
+
+      <ul class="notes">
+        <li><strong>Student discount</strong> with a valid ID.</li>
+        <li><strong>Special haircuts:</strong> ask about first-time customer pricing.</li>
+        <li><strong>Everything else:</strong> price is set when you arrive.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap">
+      <div>
+        <h2>Book by email</h2>
+        <p style="margin:0;color:var(--ink-soft);max-width:30rem">Email is the easiest way to book with Goto. Send a note with the details below.</p>
+      </div>
+      <div>
+        <address>
+          <a href="mailto:gotohairny@gmail.com?subject=Appointment%20request&amp;body=Hi%20Goto%2C%0A%0AI%27d%20like%20to%20book%20a%20haircut.%0A%0AName%3A%20%0AService%3A%20%0APreferred%20day%20and%20time%3A%20%0AFirst%20visit%3F%20%0A">gotohairny@gmail.com</a>
+        </address>
+        <ol class="steps">
+          <li>Tell him your name and the service you want.</li>
+          <li>Give a day and time at least 24 hours ahead.</li>
+          <li>Mention if it’s your first visit or you have a student ID.</li>
+        </ol>
+        <a class="btn" href="mailto:gotohairny@gmail.com?subject=Appointment%20request&amp;body=Hi%20Goto%2C%0A%0AI%27d%20like%20to%20book%20a%20haircut.%0A%0AName%3A%20%0AService%3A%20%0APreferred%20day%20and%20time%3A%20%0AFirst%20visit%3F%20%0A">Write the email</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="studio" id="studio">
+    <div class="wrap">
+      <figure>
+        <img src="images/studio-interior.jpeg" width="546" height="364" loading="lazy" alt="Inside the salon: a long room with exposed brick on the left, mirrors, black styling chairs, warm wall lights and a worn wood plank floor.">
+      </figure>
+      <div>
+        <h2>The studio</h2>
+        <p>One long room with brick on one side, mirrors along it and an old wood floor underfoot. It’s a calm place to get a haircut, and Goto works with one client at a time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="rent on-brick" id="rent">
+    <div class="wrap">
+      <div>
+        <h2>Freelance stylist? Rent a chair.</h2>
+        <p>There’s room in the studio for more than one pair of hands. Goto has extra styling chairs available for freelance stylists.</p>
+      </div>
+      <div>
+        <ul class="terms">
+          <li>Rent by the day or by the week.</li>
+          <li>Work from a calm, well-lit room in the East Village.</li>
+          <li>Ask Goto about rates and open dates.</li>
+        </ul>
+        <a class="btn glow" href="mailto:gotohairny@gmail.com?subject=Chair%20rental%20inquiry&amp;body=Hi%20Goto%2C%0A%0AI%27m%20a%20stylist%20and%20I%27m%20interested%20in%20renting%20a%20chair.%0A%0AName%3A%20%0ADaily%20or%20weekly%3A%20%0ADates%20I%20need%3A%20%0AA%20bit%20about%20my%20work%3A%20%0A">Ask about renting a chair</a>
+        <p class="alt">Or email <a href="mailto:gotohairny@gmail.com?subject=Chair%20rental%20inquiry">gotohairny@gmail.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Goto Hair Salon · 225 East 5th Street, New York, NY 10003</span>
+    <ul>
+      <li><a href="https://www.yelp.com/biz/goto-new-york-2" rel="noopener">Yelp</a></li>
+      <li><a href="https://www.facebook.com/pages/category/Hair-Salon/Hair-Salon-Goto-134019820006673/" rel="noopener">Facebook</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Show whether the salon is open right now, in New York time.
+  (function () {
+    var el = document.getElementById('status');
+    var txt = document.getElementById('status-text');
+    try {
+      var p = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false
+      }).formatToParts(new Date());
+      var get = function (t) { return p.find(function (x) { return x.type === t; }).value; };
+      var day = get('weekday');
+      var mins = (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10);
+      var open = day !== 'Mon' && mins >= 13 * 60 && mins < 21 * 60;
+      el.dataset.open = open;
+      txt.textContent = open ? 'Open now until 9 pm' : 'Closed now. Open Tuesday to Sunday, 1 pm to 9 pm';
+    } catch (e) { /* keep the static text */ }
+  })();
+</script>
+</body>
+</html>
